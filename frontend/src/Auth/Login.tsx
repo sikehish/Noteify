@@ -1,0 +1,22 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+export function Login() {
+  return (
+    <div>
+      <h3>Sign Up</h3>
+      <label>
+        <h5>Enter Email ID</h5>
+        <input type="email" />
+      </label>
+      <label>
+        <h5>Enter Password</h5>
+        <input type="password" />
+      </label>
+      <p>
+        Dont have an account?<Link to="/signup">Sign Up</Link>
+      </p>
+      <button type="submit">Login</button>
+    </div>
+  );
+}
