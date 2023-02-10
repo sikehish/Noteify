@@ -13,7 +13,7 @@ dist-ssr
 *.local
 
 
-.pwtest.txt
+pwtest.txt
 
 # Editor directories and files
 .vscode/*
