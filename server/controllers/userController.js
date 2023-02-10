@@ -18,9 +18,9 @@ exports.userLogin = async (req, res) => {
 };
 
 exports.userSignup = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, cpassword } = req.body;
   try {
-    const user = await User.signup(email, password);
+    const user = await User.signup(email, password, cpassword);
     res.status(200).json({ email });
   } catch (err) {
     res.status(400).json({ err: err.message });

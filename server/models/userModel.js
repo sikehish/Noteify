@@ -14,9 +14,10 @@ userSchema = mongoose.Schema({
   },
 });
 
-userSchema.statics.signup = async function (email, password) {
+userSchema.statics.signup = async function (email, password, cpassword) {
   if (!email || !password) throw Error("Email and password must be filled");
   else if (!validator.isEmail(email)) throw Error("Invalid email");
+  else if (password !== cpassword) throw Error("Passwords not matching");
   else if (!validator.isStrongPassword(password))
     throw Error("Password not strong");
 

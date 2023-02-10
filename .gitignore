@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+
+./passwdtest.txt
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
