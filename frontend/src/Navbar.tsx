@@ -14,7 +14,7 @@ function Navbar() {
     e.preventDefault();
     logout();
     if (state?.user === null) navigate("/");
-    notesObj.dispatch("DELETEALL");
+    notesObj.dispatch({ type: "DELETEALL" });
   };
 
   return (

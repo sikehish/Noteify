@@ -35,6 +35,7 @@ const reducer = (state: obj[], action: act): obj[] => {
     const ans = state.find((el: obj) => {
       return (el._id = action.payload._id);
     });
+    console.log(action, ans);
     ans!.title = action.payload.title;
     ans!.description = action.payload.description;
     return [...state];

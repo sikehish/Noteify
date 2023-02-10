@@ -17,6 +17,7 @@ exports.getAllNotes = async (req, res) => {
 
 exports.editNote = async (req, res) => {
   try {
+    console.log("ID: ", req.params.id, req.body);
     const allNotes = await Note.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
