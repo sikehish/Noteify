@@ -1,46 +1,34 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
-const port = 3000;
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+const userRouter = require("./routers/userRouter");
+const noteRouter = require("./routers/noteRouter");
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-app.get("/get", function (req, res) {
-  res.send("Hello World");
-});
+app.use("/api/user", userRouter);
+app.use("/api", noteRouter);
 
-app.get("/login", function (req, res) {
-  res.send("Login");
-});
+const connStr = process.env.MONGO_URI.replace(
+  "<password>",
+  process.env.MONGO_PASSWD
+);
 
-app.get("/signup", function (req, res) {
-  res.send("SignUp");
-});
+mongoose.set("strictQuery", true);
 
-app.get("/create", function (req, res) {
-  res.send("SignUp");
-});
-
-app.get("/delete", function (req, res) {
-  res.send("SignUp");
-});
-
-app.listen(port, () => {
-  console.log("Sup!!");
-});
-
-const connStr = process.env.MONGO_URI.replace("<password>", process.env.PASSWD);
-// console.log(connStr);
-
-// Running the app only when connection is succesful
 mongoose
   .connect(connStr, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
   .then((con) => {
-    // console.log(con.connections);
     app.listen(process.env.PORT || 8000, () => {
-      console.log("LISTENIN..");
+      console.log("Working fine!");
     });
   });
