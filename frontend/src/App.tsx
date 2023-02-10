@@ -5,20 +5,31 @@ import "./App.css";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import { Signup } from "./Auth/Signup";
-import { Login } from "./Auth/Login";
+import Login from "./Auth/Login";
 import Notes from "./Notes/Notes";
+import { useAuthContext } from "./Hooks/AuthContext";
 
 function App() {
+  const { state } = useAuthContext();
+
   return (
     <div>
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/notes" element={<Notes />} />
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route
+            path="/notes"
+            element={state?.user ? <Notes /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/signup"
+            element={!state?.user ? <Signup /> : <Navigate to="/notes" />}
+          />
+          <Route
+            path="/login"
+            element={!state?.user ? <Login /> : <Navigate to="/notes" />}
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>

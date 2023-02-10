@@ -36,8 +36,8 @@ userSchema.statics.signup = async function (email, password, cpassword) {
 userSchema.statics.login = async function (email, password) {
   if (!email || !password) throw Error("Email and password must be filled");
   else if (!validator.isEmail(email)) throw Error("Invalid email");
-  else if (!validator.isStrongPassword(password))
-    throw Error("Password not strong");
+  // else if (!validator.isStrongPassword(password))
+  //   throw Error("Password not strong");
 
   const user = await this.findOne({ email }); ///returns null if not present
 

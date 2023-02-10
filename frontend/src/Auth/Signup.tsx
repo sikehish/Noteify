@@ -18,7 +18,9 @@ export function Signup() {
       cpwRef.current?.value as string
     );
     setTimeout(() => {
-      navigate("/login");
+      if (isSucc) {
+        navigate("/login");
+      }
     }, 1500);
   };
 

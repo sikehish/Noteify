@@ -1,14 +1,26 @@
 import { createContext, useReducer, useContext } from "react";
 
-const AuthContext = createContext();
+const AuthContext = createContext({} as auth);
 
-export const useAuthContext = () => {
-  const val = useContext(AuthContext);
+interface st {
+  user: { email: string; token: string } | null;
+}
+
+interface auth {
+  state: st | null;
+  dispatch: Function;
+}
+
+export const useAuthContext = (): auth => {
+  const val: auth = useContext(AuthContext);
   //Need to throw error if value is being acesed outside the context defined
   return val;
 };
 
-const reducer = (state, action) => {
+const reducer = (
+  state: st,
+  action: { type: string; payload: { email: string; token: string } | null }
+) => {
   if (action.type === "SIGNUP") {
     return { user: null }; //NOT IMPLEMENTING AUTO REGISTRATION ON SIGNUP
   } else if (action.type === "LOGIN") {
@@ -23,7 +35,7 @@ export const AuthContextProvider = ({
 }: {
   children: JSX.Element;
 }) => {
-  const [state, dispatch]: [{ user: string | null }, Function] = useReducer(
+  const [state, dispatch]: [user: st, dispatch: Function] = useReducer(
     reducer,
     {
       user: JSON.parse(localStorage.getItem("user") as string) || null,

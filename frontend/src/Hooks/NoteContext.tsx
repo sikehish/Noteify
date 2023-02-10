@@ -1,28 +1,63 @@
 import { createContext, useReducer, useContext } from "react";
 
-const NoteContext = createContext();
+const NoteContext = createContext({} as ContextType);
 
 export const useNoteContext = () => {
   const val = useContext(NoteContext);
   return val;
 };
 
-const reducer = (state, action) => {
-  if (action.type === "SET") {
-    return { title: action.payload, description: action.description };
+interface obj {
+  title?: string;
+  description?: string;
+  _id?: string;
+}
+
+interface act {
+  type: string;
+  payload?: any;
+}
+
+const reducer = (state: obj[], action: act): obj[] => {
+  if (action.type === "CREATE") {
+    const ele = {
+      ...action.payload,
+    };
+    return [...state, ele];
+  } else if (action.type === "SET") {
+    return [...action.payload];
   } else if (action.type === "DELETE") {
-    return { title: null, description: null };
+    const ans = state.filter((el: obj) => {
+      return el._id != action.payload?._id;
+    });
+    return ans;
+  } else if (action.type === "EDIT") {
+    const ans = state.find((el: obj) => {
+      return (el._id = action.payload._id);
+    });
+    ans!.title = action.payload.title;
+    ans!.description = action.payload.description;
+    return [...state];
+  } else if (action.type === "DELETEALL") {
+    return [];
   } else return state;
 };
 
-export const NoteContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    title: null,
-    description: null,
-  });
+interface ContextType {
+  state: obj[];
+  dispatch: React.Dispatch<{ type: string; payload?: obj }>;
+}
+
+export const NoteContextProvider = ({
+  children,
+}: {
+  children: JSX.Element;
+}) => {
+  const [state, dispatch] = useReducer(reducer, []);
+  // const value:ContextType={ dispatch, state }
 
   return (
-    <NoteContext.Provider value={{ dispatch, state }}>
+    <NoteContext.Provider value={{ state, dispatch }}>
       {children}
     </NoteContext.Provider>
   );

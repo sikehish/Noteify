@@ -31,8 +31,8 @@ const checkAuth = (req, res, next) => {
 
 noteRouter.use(checkAuth);
 
-noteRouter.route("/note").get(getAllNotes).post(createNote);
+noteRouter.route("/notes").get(getAllNotes).post(createNote);
 
-noteRouter.route("/note/:id").delete(deleteNote).patch(editNote);
+noteRouter.route("/notes/:id").delete(deleteNote).patch(editNote);
 
 module.exports = noteRouter;
