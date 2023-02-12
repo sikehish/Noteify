@@ -10,6 +10,7 @@ export const useNoteContext = () => {
 interface obj {
   title?: string;
   description?: string;
+  pinned?: boolean;
   _id?: string;
 }
 
@@ -33,11 +34,20 @@ const reducer = (state: obj[], action: act): obj[] => {
     return ans;
   } else if (action.type === "EDIT") {
     const ans = state.find((el: obj) => {
-      return (el._id = action.payload._id);
+      return el._id == action.payload._id;
     });
-    console.log(action, ans);
+    // console.log("ACTION: ", action.payload!.title);
+    // console.log("ANS: ", ans!.title);
     ans!.title = action.payload.title;
     ans!.description = action.payload.description;
+    console.log([...state]);
+    return [...state];
+  } else if (action.type === "PINNED") {
+    const ans = state.find((el: obj) => {
+      return el._id == action.payload._id;
+    });
+    ans!.pinned = !ans!.pinned;
+    // console.log(ans!.pinned);
     return [...state];
   } else if (action.type === "DELETEALL") {
     return [];

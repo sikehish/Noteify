@@ -12,7 +12,7 @@ export function Signup() {
   const [succ, setSucc] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit: React.FormEventHandler<HTMLInputElement> = async (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await signup(
       mailRef.current?.value as string,
@@ -37,33 +37,47 @@ export function Signup() {
   }, [flag, error, isLoading]);
 
   return (
-    <div onSubmit={handleSubmit}>
-      <h3>Sign Up</h3>
-      <form>
-        <label>
-          <h5>Enter Email ID</h5>
-          <input type="email" ref={mailRef} />
-        </label>
-        <label>
-          <h5>Enter Password</h5>
-          <input type="password" ref={pwRef} />
-        </label>
-        <label>
-          <h5>Confirm Password</h5>
-          <input type="password" ref={cpwRef} />
-        </label>
-        <div style={{ color: "red", margin: "10px", fontWeight: "900" }}>
-          {error}
-        </div>
-        <div style={{ color: "green", margin: "10px", fontWeight: "900" }}>
-          {succ}
-        </div>
-        {isLoading && <div>Loading..</div>}
-        <p>
-          Already have an account?<Link to="/login">Login</Link>
-        </p>
-        <button type="submit">Signup</button>
-      </form>
-    </div>
+    <form
+      onSubmit={handleSubmit}
+      className="auth-form flex-col justify-center items-center text-center mr-auto ml-auto mt-10 px-10 py-8 min-w-[10%] max-w-[30%] bg-gray-300"
+    >
+      <h3 className="font-bold text-xl mb-7 text-center">Sign Up</h3>
+      <input
+        type="email"
+        ref={mailRef}
+        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-7"
+        placeholder="Email address"
+      />
+      <input
+        type="password"
+        ref={pwRef}
+        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-7"
+        placeholder="Password"
+      />
+      <input
+        type="password"
+        ref={cpwRef}
+        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-7"
+        placeholder="Confirm Password"
+      />
+      <button
+        disabled={isLoading!}
+        className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full mb-8"
+        type="submit"
+      >
+        Sign Up
+      </button>
+      <div style={{ color: "red", margin: "10px", fontWeight: "900" }}>
+        {error}
+      </div>
+      <div style={{ color: "green", margin: "10px", fontWeight: "900" }}>
+        {succ}
+      </div>
+      {isLoading && <div>Loading..</div>}
+      <Link to="/login" className="block">
+        Already registered?{" "}
+        <span className="underline text-blue-900 hover:text-white">Log In</span>
+      </Link>
+    </form>
   );
 }

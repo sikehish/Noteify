@@ -20,25 +20,36 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
-      <h3>Log In</h3>
-      <label htmlFor="em">Email</label>
+    <form
+      onSubmit={handleSubmit}
+      className="auth-form flex-col justify-center items-center text-center mr-auto ml-auto mt-10 px-10 py-8 min-w-[10%] max-w-[30%] bg-gray-300"
+    >
+      <h3 className="font-bold text-xl mb-7 text-center">Sign In</h3>
+      {/* <label htmlFor="em">Email</label> */}
       <input
         type="email"
         id="em"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
+        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-7"
+        placeholder="Email address"
       />
 
-      <label htmlFor="pw">Password</label>
+      {/* <label htmlFor="pw">Password</label> */}
       <input
         type="password"
         id="pw"
         onChange={(e) => setPw(e.target.value)}
         value={pw}
+        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-7"
+        placeholder="Password"
       />
-      <button disabled={isLoading} type="submit">
-        Login
+      <button
+        disabled={isLoading}
+        className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full mb-8"
+        type="submit"
+      >
+        Sign In
       </button>
       {error && (
         <div style={{ color: "red", margin: "10px", fontWeight: "900" }}>
@@ -50,8 +61,9 @@ export default function Login() {
           Succesfuly logged in!
         </div>
       )}
-      <Link to="/signup">
-        Not yet registered? <span>Signup</span>
+      <Link to="/signup" className="block">
+        Not yet registered?{" "}
+        <span className="underline text-blue-900 hover:text-white">Signup</span>
       </Link>
     </form>
   );

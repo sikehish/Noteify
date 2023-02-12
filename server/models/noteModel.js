@@ -9,6 +9,10 @@ noteSchema = mongoose.Schema(
     },
     description: {
       type: String,
+      // required: true,
+    },
+    pinned: {
+      type: Boolean,
       required: true,
     },
     uid: {
