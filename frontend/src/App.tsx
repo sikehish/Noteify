@@ -8,6 +8,7 @@ import { Signup } from "./Auth/Signup";
 import Login from "./Auth/Login";
 import Notes from "./Notes/Notes";
 import { useAuthContext } from "./Hooks/AuthContext";
+import Footer from "./Footer";
 
 function App() {
   const { state } = useAuthContext();
@@ -32,6 +33,7 @@ function App() {
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

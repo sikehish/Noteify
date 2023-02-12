@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import useLogin from "../Hooks/useLogin";
 import { Link, useNavigate } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 export default function Login() {
   const [email, setEmail] = useState("");
+  const [passwordShown, setPasswordShown] = useState(false);
   const [pw, setPw] = useState("");
   const { login, error, isLoading, isSucc } = useLogin();
   const navigate = useNavigate();
@@ -17,6 +19,10 @@ export default function Login() {
       }, 1500);
     }
     console.log(error);
+  };
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
   };
 
   return (
@@ -34,16 +40,32 @@ export default function Login() {
         className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-7"
         placeholder="Email address"
       />
-
       {/* <label htmlFor="pw">Password</label> */}
       <input
-        type="password"
+        type={passwordShown ? "text" : "password"}
         id="pw"
         onChange={(e) => setPw(e.target.value)}
         value={pw}
-        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-7"
+        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none mb-0"
         placeholder="Password"
-      />
+      />{" "}
+      {passwordShown ? (
+        <div className="text-center flex justify-start items-start align-middle m-0 p-0 mt-1 mb-4">
+          <span className="text-xs">Hide</span>
+          <AiFillEyeInvisible
+            className="mb-6 text-center mx-0"
+            onClick={togglePassword}
+          />
+        </div>
+      ) : (
+        <div className="text-center flex justify-start items-start align-middle m-0 p-0 mt-1 mb-4">
+          <span className="text-xs">Show</span>
+          <AiFillEye
+            className="mb-6 text-center mx-0"
+            onClick={togglePassword}
+          />
+        </div>
+      )}
       <button
         disabled={isLoading}
         className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full mb-8"

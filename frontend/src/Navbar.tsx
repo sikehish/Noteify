@@ -31,7 +31,7 @@ function Navbar() {
           className="text-white"
           style={{ filter: "invert(100%)", height: "30px", width: "30px" }}
         />
-        <h3 className="text-white pl-3 ">noteify.</h3>
+        <h3 className="text-white pl-3 ">Noteify.</h3>
       </div>
       <div className="flex  mr-5 justify-end items-center align-middle">
         <NavLink
