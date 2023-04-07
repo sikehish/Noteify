@@ -4,6 +4,8 @@ I've used NodeJS(Express) on server side and MongoDB for DB. Tailwind CSS for th
 
 Goals ahead: 
 1) To create a study timer(similar to pomodoro timer) and integrate it with Noteify.
-2) Inlcude labels feature for the notes, and also bring in textformatting options
+2) Include labels feature for the notes, and also bring in text formatting options.
+3) Implement pagination for notes
+4) Responsiveness
 
 Ping me up if you'd want to contribute :)
