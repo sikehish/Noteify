@@ -3,7 +3,7 @@ import logo from "./assets/postit.png";
 
 function Home() {
   return (
-    <div className="pt-12">
+    <div className="pt-12 w-full h-full font-poppins pb-8">
       <section className="flex justify-evenly items-center m-6">
         <div className="flex-col text-center justify-center items-start">
           <h1 className="p-5 pb-3 text-3xl">
@@ -12,7 +12,7 @@ function Home() {
               Noteify.
             </span>
           </h1>
-          <p className="p-5 text-lg">Your one stop shop for the student you.</p>
+          <p className="p-5 text-lg ">Your one stop shop for the student you.</p>
         </div>
         <div className="w-[25%] m-6">
           <img className="block object-cover" src={logo} alt="Noteify" />

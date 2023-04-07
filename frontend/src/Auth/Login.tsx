@@ -28,7 +28,7 @@ export default function Login() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="auth-form flex-col justify-center items-center text-center mr-auto ml-auto mt-10 px-10 py-8 min-w-[10%] max-w-[30%] bg-gray-300"
+      className="auth-form rounded-3xl flex-col justify-center items-center text-center mr-auto ml-auto mt-20 px-5 py-8 min-w-[10%] max-w-[30%] bg-gray-300"
     >
       <h3 className="font-bold text-xl mb-7 text-center">Sign In</h3>
       {/* <label htmlFor="em">Email</label> */}
@@ -37,7 +37,7 @@ export default function Login() {
         id="em"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
-        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-7"
+        className="form-control block w-[75%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-9"
         placeholder="Email address"
       />
       {/* <label htmlFor="pw">Password</label> */}
@@ -46,29 +46,29 @@ export default function Login() {
         id="pw"
         onChange={(e) => setPw(e.target.value)}
         value={pw}
-        className="form-control block w-[100%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none mb-0"
+        className="form-control block w-[75%] mx-auto px-4 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none my-9"
         placeholder="Password"
       />{" "}
       {passwordShown ? (
-        <div className="text-center flex justify-start items-start align-middle m-0 p-0 mt-1 mb-4">
-          <span className="text-xs">Hide</span>
+        <div className="text-center flex justify-center items-center align-middle m-0 p-0 mt-1 mb-4">
+          <span className="px-3">Hide</span>
           <AiFillEyeInvisible
-            className="mb-6 text-center mx-0"
+            className=""
             onClick={togglePassword}
           />
         </div>
       ) : (
-        <div className="text-center flex justify-start items-start align-middle m-0 p-0 mt-1 mb-4">
-          <span className="text-xs">Show</span>
+        <div className="text-center flex justify-center items-center align-middle m-0 p-0 mt-1 mb-4">
+          <span className="px-3">Show</span>
           <AiFillEye
-            className="mb-6 text-center mx-0"
+            className=""
             onClick={togglePassword}
           />
         </div>
       )}
       <button
         disabled={isLoading}
-        className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full mb-8"
+        className="inline-block px-7 py-3 w-[75%] bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mb-8"
         type="submit"
       >
         Sign In

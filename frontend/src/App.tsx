@@ -14,7 +14,7 @@ function App() {
   const { state } = useAuthContext();
 
   return (
-    <div>
+    <div className="font-poppins">
       <BrowserRouter>
         <Navbar />
         <Routes>

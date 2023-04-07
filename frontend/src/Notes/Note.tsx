@@ -80,9 +80,9 @@ function Note({
           Title incomplete!
         </div>
       )}
-      <h4
+      <div
         id="contenteditablediv"
-        contentEditable="plaintext-only"
+        contentEditable="true"
         onInput={(e) => {
           console.log("Text inside div", e.currentTarget.innerText);
           setDescription(e.currentTarget.innerText!);
@@ -90,10 +90,10 @@ function Note({
         // autoFocus
         //  onFocus={e => e.currentTarget.select()}
         suppressContentEditableWarning={true}
-        className="text-sm p-2 m-2"
+        className="contentEdit text-sm p-2 m-2"
       >
         {description}
-      </h4>
+      </div>
       {/* <button onClick={deleteNote}>Delete</button> */}
     </div>
   );

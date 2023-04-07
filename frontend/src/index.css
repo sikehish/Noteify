@@ -1,9 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+html {
+  /* height: 100vh;
+  padding: 0;
+  border: 0px solid;
+  margin: 0; */
+}
+
+
+
+.contentEdit {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  /* white-space: pre-wrap; */
+  /* word-break: break-word; */
+  -moz-user-select: text;
+  overflow: auto;
+}
+
 body {
   background-color: rgb(247, 234, 234);
+  /* border: solid; */
+  overflow-x: hidden;
+  /* min-height: 100vh; */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 /* :root {
