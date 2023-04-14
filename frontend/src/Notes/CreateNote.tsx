@@ -1,6 +1,7 @@
 import { FormEventHandler, useRef, useState } from "react";
 import { useAuthContext } from "../Hooks/AuthContext";
 import { useNoteContext } from "../Hooks/NoteContext";
+
 import "./CreateNote.css";
 
 export default () => {
@@ -12,7 +13,6 @@ export default () => {
   const notesObj = useNoteContext();
 
   const textareaRef = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
-
   const handleChange: FormEventHandler = (e) => {
     textareaRef.current!.style.height = "auto";
     textareaRef.current!.style.height =
